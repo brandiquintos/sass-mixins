@@ -1,0 +1,17 @@
+@mixin truncate-one-line($enabled:true) {
+    @if ($enabled == true) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    } @else {
+        white-space: normal;
+        overflow: initial;
+        text-overflow: initial;
+    }
+
+	@content;
+}
+@mixin tol($enabled:true) {
+    @include truncate-one-line ($enabled);
+    @content;
+}

@@ -1,0 +1,27 @@
+@import 'functions/trim';
+
+/// Border
+/// creates simple maintainable, reuseable, borders
+/// @parameter {color} $color [#000]
+/// @parameter {list} $width [1 1 1 1] - we assume pixels (px) if unitless
+/// @parameter {string} $style [style] - any border style
+@mixin border($color: #000, $width: 1 1 1 1, $style: solid) {
+    $widthString: null;
+
+    @each $w in $width {
+        @if unitless($w) {
+            $widthString: $widthString #{$w}px;
+        }
+        @else {
+            $widthString: $widthString #{$w};
+        }
+    }
+    $width: trim(#{$widthString});
+    @if $color != false {
+        border-color: $color;
+        border-style: $style;
+        border-width: $width;
+    } @else {
+        border: 0;
+    }
+}

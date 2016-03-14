@@ -1,0 +1,8 @@
+@mixin equidistant {
+    text-align: justify;
+    &:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+    }
+}
